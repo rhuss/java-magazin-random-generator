@@ -22,6 +22,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<fabric8.enricher.fmp-service.type>NodePort</fabric8.enricher.fmp-service.type>
 	</properties>
 
 	<dependencies>
@@ -57,6 +58,16 @@
 				<groupId>io.fabric8</groupId>
 				<artifactId>fabric8-maven-plugin</artifactId>
 				<version>3.5.41</version>
+
+				<configuration>
+					<enricher>
+						<config>
+							<fmp-controller>
+								<replicaCount>2</replicaCount>
+							</fmp-controller>
+						</config>
+					</enricher>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
