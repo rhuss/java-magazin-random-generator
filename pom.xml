@@ -5,7 +5,7 @@
 
 	<groupId>demo</groupId>
 	<artifactId>random-generator</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<packaging>jar</packaging>
 
 	<name>random-generator</name>
@@ -63,11 +63,21 @@
 					<enricher>
 						<config>
 							<fmp-controller>
-								<replicaCount>2</replicaCount>
+								<replicaCount>1</replicaCount>
 							</fmp-controller>
 						</config>
 					</enricher>
 				</configuration>
+
+				<executions>
+					<execution>
+						<goals>
+							<goal>resource</goal>
+							<goal>build</goal>
+						</goals>
+					</execution>
+				</executions>
+
 			</plugin>
 		</plugins>
 	</build>
