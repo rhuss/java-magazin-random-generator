@@ -1,0 +1,13 @@
+spec:
+  replicas: 3
+  template:
+    spec:
+      containers:
+        - name: spring-boot
+          volumeMounts:
+          - mountPath: "/random"
+            name: random-data
+      volumes:
+        - name: random-data
+          persistentVolumeClaim:
+            claimName: random-data

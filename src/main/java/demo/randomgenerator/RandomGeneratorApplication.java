@@ -1,5 +1,8 @@
 package demo.randomgenerator;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
 import java.util.*;
 
 import org.springframework.boot.SpringApplication;
@@ -26,6 +29,20 @@ public class RandomGeneratorApplication {
 		Map ret = new HashMap();
 		ret.put("id", id);
 		ret.put("random", random.nextInt());
+
+		logRandomNumber(ret);
 		return ret;
+	}
+
+	private void logRandomNumber(Map ret) {
+		try (Writer out = new FileWriter("/random/numbers.txt", true)) {
+			out.append(String.format("[%d] %s %d",
+									 System.currentTimeMillis(),
+									 ret.get("id"),
+									 ret.get("random")));
+			out.append("\n");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
